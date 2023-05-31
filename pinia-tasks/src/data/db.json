@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Buy some milk",
+      "isFav": false
+    },
+    {
+      "id": 2,
+      "title": "Play Warcraft",
+      "isFav": true
+    },
+    {
+      "id": 3,
+      "title": "Cook",
+      "isFav": false
+    },
+    {
+      "id": 4,
+      "title": "Gym",
+      "isFav": true
+    },
+    {
+      "title": "Pinia1",
+      "isFav": false,
+      "id": 1685561384054
+    },
+    {
+      "title": "Pinia22",
+      "isFav": true,
+      "id": 1685561435659
+    },
+    {
+      "title": "Test123",
+      "isFav": false,
+      "id": 1685561558692
+    }
+  ]
+}
