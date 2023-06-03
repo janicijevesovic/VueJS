@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Buy some milk",
-      "isFav": false
+      "isFav": true
     },
     {
       "id": 2,
@@ -21,18 +21,8 @@
       "isFav": true
     },
     {
-      "title": "Pinia1",
-      "isFav": false,
-      "id": 1685561384054
-    },
-    {
-      "title": "Pinia22",
-      "isFav": true,
-      "id": 1685561435659
-    },
-    {
       "title": "Test123",
-      "isFav": false,
+      "isFav": true,
       "id": 1685561558692
     }
   ]
