@@ -6,4 +6,5 @@ definePageMeta({
 
 <template>
 	<div>Custom Page</div>
+	<IconsBell />
 </template>
