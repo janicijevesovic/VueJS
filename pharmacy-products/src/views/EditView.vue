@@ -48,7 +48,7 @@
 					name="expiry-date"
 					type="date"
 					required
-					v-model.lazy="formData.expiryDate"
+					v-model="formData.expiryDate"
 				/>
 			</div>
 
@@ -78,7 +78,7 @@ const formData = ref({
 	productName: '',
 	manufacturerName: '',
 	price: 0,
-	expiryDate: new Date(),
+	expiryDate: new Date().toDateString(),
 });
 
 if (typeof id === 'string') {
@@ -93,8 +93,17 @@ if (typeof id === 'string') {
 	if (typeof foundProduct?.price === 'number')
 		formData.value.price = foundProduct.price;
 
-	if (typeof foundProduct?.expiryDate === 'object')
-		formData.value.expiryDate = foundProduct.expiryDate;
+	if (typeof foundProduct?.expiryDate === 'object') {
+		const year = foundProduct.expiryDate.getFullYear();
+		const month = String(foundProduct.expiryDate.getMonth() + 1).padStart(
+			2,
+			'0'
+		);
+		const day = String(foundProduct.expiryDate.getDate()).padStart(2, '0');
+		const dateStringValue = `${year}-${month}-${day}`;
+
+		formData.value.expiryDate = dateStringValue;
+	}
 }
 
 const submitProduct = () => {
