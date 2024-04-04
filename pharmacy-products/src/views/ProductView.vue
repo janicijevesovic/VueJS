@@ -30,6 +30,7 @@
 					product.expiryDate.toLocaleDateString('en-GB')
 				}}</span>
 				<button
+					@click="editProduct(product.id)"
 					class="w-full px-4 py-2 font-bold text-white bg-blue-700 rounded hover:bg-blue-800"
 				>
 					Edit Product
@@ -47,6 +48,15 @@
 
 <script setup lang="ts">
 import { useProductStore } from '../stores/ProductStore';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const productStore = useProductStore();
+
+const editProduct = (productId: string) => {
+	router.push({
+		path: `/${productId}`,
+	});
+};
 </script>
