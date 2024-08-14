@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-interface IProduct {
+export interface IProduct {
 	id: string;
 	name: string;
 	manufacturer: IManufacturer;
@@ -8,7 +8,7 @@ interface IProduct {
 	expiryDate: Date;
 }
 
-interface IManufacturer {
+export interface IManufacturer {
 	id: string;
 	name: string;
 }
