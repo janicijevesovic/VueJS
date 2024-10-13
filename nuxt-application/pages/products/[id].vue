@@ -1,15 +1,24 @@
 <template>
-	<div>
-		<h2>Product details for {{ id }}</h2>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
-			dicta!
-		</p>
+	<div v-if="product">
+		<ProductDetails :product="product" />
 	</div>
 </template>
 
 <script setup lang="ts">
+import type { Product } from '~/interfaces/Product';
+
 const { id } = useRoute().params;
+const uri = 'https://fakestoreapi.com/products/' + id;
+
+const { data: product } = await useFetch<Product>(uri);
+
+if (!product.value) {
+	throw createError({
+		statusCode: 404,
+		message: 'Product not found',
+		fatal: true,
+	});
+}
 
 definePageMeta({
 	layout: 'products',

@@ -2,25 +2,14 @@
 	<div>
 		<div class="grid grid-cols-4 gap-4">
 			<div v-for="product in products">
-				<NuxtLink :to="`/products/${product.id}`"
-					>{{ product.title }} {{ product.rating.rate }}</NuxtLink
-				>
+				<ProductCard :product="product" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-interface Product {
-	id: number;
-	title: string;
-	rating: Rating;
-}
-
-interface Rating {
-	count: number;
-	rate: number;
-}
+import type { Product } from '~/interfaces/Product';
 
 definePageMeta({
 	layout: 'products',
