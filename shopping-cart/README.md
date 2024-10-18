@@ -31,3 +31,10 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Admin Credentials
+
+```sh
+email: admin@cart.com
+password: adminP@ss
+```

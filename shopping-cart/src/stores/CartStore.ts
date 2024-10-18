@@ -1,5 +1,14 @@
 import { defineStore } from 'pinia';
 
+export interface CartItem {
+	id: number;
+	name: string;
+	price: number;
+	discount: number | null;
+	imageUrl: string;
+	numInCart: number;
+}
+
 export const useCartStore = defineStore('cartStore', {
 	state: () => ({
 		cart: [
@@ -107,7 +116,11 @@ export const useCartStore = defineStore('cartStore', {
 				imageUrl: '/item1.jpg',
 				numInCart: 0,
 			},
-		],
+		] as CartItem[],
+		loginCredentials: {
+			email: 'admin@cart.com',
+			password: 'adminP@ss',
+		},
 	}),
 	getters: {
 		inCart: (state) => state.cart.filter((item) => item.numInCart),

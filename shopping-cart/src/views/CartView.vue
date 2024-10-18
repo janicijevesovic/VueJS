@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CartActions from '@/components/CartActions.vue';
+import PaymentInfo from '@/components/PaymentInfo.vue';
 import { useCartStore } from '@/stores/CartStore';
 const cartStore = useCartStore();
 </script>
@@ -20,19 +22,7 @@ const cartStore = useCartStore();
 								{{ item.price - (item.discount ?? 0) }} RSD po kom.
 							</span>
 							<div class="flex items-center gap-4">
-								<button
-									class="text-3xl"
-									@click="cartStore.removeItemFromCart(item.id)"
-								>
-									-
-								</button>
-								<span class="text-xl">{{ item.numInCart }}</span>
-								<button
-									class="text-3xl"
-									@click="cartStore.addItemToCart(item.id)"
-								>
-									+
-								</button>
+								<CartActions :item="item" />
 
 								<button
 									class="text-xl underline"
@@ -47,59 +37,26 @@ const cartStore = useCartStore();
 					<div>
 						<span v-if="item.discount" class="block text-2xl">
 							{{ (item.price - item.discount) * item.numInCart }}
-							<sup>RSD</sup>
+							<sup> RSD</sup>
 						</span>
 						<span
 							class="block text-2xl"
 							:class="{ 'text-orange-600': item.discount }"
 						>
-							<s v-if="item.discount">{{ item.price * item.numInCart }}</s>
-							<span v-else>{{ item.price * item.numInCart }}</span>
-							<sup>RSD</sup>
+							<s v-if="item.discount">
+								{{ item.price * item.numInCart }}
+							</s>
+							<span v-else>
+								{{ item.price * item.numInCart }}
+							</span>
+							<sup> RSD</sup>
 						</span>
 					</div>
 				</div>
 			</div>
 			<div class="p-4 bg-gray-200 h-min basis-2/5">
-				<h3 class="text-lg font-bold">Tvoja narudzbina</h3>
-				<div class="py-4 border-b border-gray-300">
-					<div class="flex justify-between gap-4">
-						<span>Ukupno:</span>
-						<span>{{ cartStore.inCartValue }} <sup>RSD</sup></span>
-					</div>
-
-					<div class="flex justify-between gap-4">
-						<span>Popust:</span>
-						<span>
-							-{{ cartStore.inCartValue - cartStore.inCartDiscount }}
-							<sup>RSD</sup>
-						</span>
-					</div>
-
-					<div class="flex justify-between gap-4">
-						<span>Isporuka Daily Express:</span>
-						<span> Besplatna </span>
-					</div>
-				</div>
-
-				<div class="flex justify-between gap-4 my-2">
-					<span>Ukupno za uplatu:</span>
-					<span>
-						{{ cartStore.inCartDiscount }}
-						<sup>RSD</sup>
-					</span>
-				</div>
-
-				<div>
-					<span class="text-sm">Cena je sa ukljucenim PDV-om</span>
-				</div>
-
-				<button class="w-full p-2 my-2 text-white bg-black rounded-full">
-					Prijavi se za brze placanje
-				</button>
+				<PaymentInfo />
 			</div>
 		</div>
 	</main>
 </template>
-
-<style></style>
