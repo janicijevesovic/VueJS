@@ -1,4 +1,8 @@
 <template>
+	<Head v-if="product">
+		<Title>Nuxt Dojo | {{ product.title }}</Title>
+		<Meta name="description" :content="product.description"></Meta>
+	</Head>
 	<div v-if="product">
 		<ProductDetails :product="product" />
 	</div>
